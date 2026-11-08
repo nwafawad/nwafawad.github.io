@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nawaf-ahmed.vercel.app/sitemap.xml
