@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Nawaf Ahmed is a Sudanese developer, UI/UX and product designer, and photographer studying software engineering at African Leadership University in Kigali.">
+<meta property="og:title" content="Nawaf Ahmed Portfolio">
+<meta property="og:description" content="Developer, product designer and photographer. Sudanese, based in Kigali.">
+<meta property="og:image" content="photos/nawaf-portrait.jpg">
+<meta name="theme-color" content="#2438D0">
+<title>Nawaf Ahmed Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Figtree:wght@400;500;700&family=Reem+Kufi:wght@500;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: stacked painted "walls" like a Nubian village house — each section is a band of
+   saturated color, separated by geometric friezes. Poster-scale type, one playable moment. */
+:root {
+  --wall: #F2F5FB;        /* limewash, faintly blue */
+  --ink: #11131C;
+  --muted: #525870;
+  --line: #D5DAE8;
+  --nile: #2438D0;        /* Nubian door blue */
+  --sun: #FFB21E;         /* saffron */
+  --red: #D21034;         /* flag red */
+  --green: #007A33;       /* flag green */
+  --on-color: #FFFFFF;
+  --on-sun: #11131C;
+  --card: #FFFFFF;
+
+  --display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --arabic: "Reem Kufi", "Geeza Pro", "Noto Kufi Arabic", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+
+  --gutter-l: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --wall: #0D1026; --ink: #F1F2FF; --muted: #A4AAC8; --line: #272C52;
+    --nile: #3F55F0; --sun: #FFBE3D; --red: #E5294B; --green: #12985A;
+    --on-color: #FFFFFF; --on-sun: #11131C; --card: #161A3A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --wall: #0D1026; --ink: #F1F2FF; --muted: #A4AAC8; --line: #272C52;
+  --nile: #3F55F0; --sun: #FFBE3D; --red: #E5294B; --green: #12985A;
+  --on-color: #FFFFFF; --on-sun: #11131C; --card: #161A3A;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--wall); color: var(--ink);
+  font-family: var(--body); font-size: 1.0625rem; line-height: 1.6;
+  overflow-x: hidden;
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+p { margin: 0; }
+
+.wrap {
+  max-width: 1180px; margin: 0 auto;
+  padding-left: var(--gutter-l); padding-right: var(--gutter-r);
+}
+.band { padding-block: clamp(56px, 9vw, 112px); }
+.eyebrow {
+  font-family: var(--mono); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
+  display: inline-flex; gap: .6em; align-items: center;
+}
+.ar { font-family: var(--arabic); font-weight: 700; direction: rtl; }
+.h2 {
+  font-family: var(--display); font-weight: 900; text-transform: uppercase;
+  font-size: clamp(3rem, 9vw, 6.5rem); line-height: .88; letter-spacing: -.01em;
+}
+
+/* Nubian frieze: rows of triangles, as painted above village doorways */
+.frieze { height: 28px; display: grid; grid-template-rows: 1fr 1fr; }
+.frieze span { display: block; background-size: 28px 14px; }
+.frieze .a { background-image: conic-gradient(from -45deg at 50% 100%, var(--sun) 90deg, var(--red) 0); }
+.frieze .b { background-image: conic-gradient(from 135deg at 50% 0%, var(--nile) 90deg, var(--green) 0); }
+.frieze.alt .a { background-image: conic-gradient(from -45deg at 50% 100%, var(--ink) 90deg, var(--sun) 0); }
+.frieze.alt .b { background-image: conic-gradient(from 135deg at 50% 0%, var(--wall) 90deg, var(--ink) 0); }
+
+/* Nav */
+.nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 20px; flex-wrap: wrap; }
+.logo { font-family: var(--display); font-weight: 900; font-size: 1.6rem; text-decoration: none; letter-spacing: .02em; }
+.logo b { color: var(--red); }
+.nav ul { display: flex; gap: clamp(12px, 2.5vw, 28px); list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+.nav ul a { text-decoration: none; font-weight: 700; font-size: .95rem; }
+.nav ul a:hover { color: var(--nile); }
+
+/* Hero */
+.hero { padding-block: clamp(24px, 5vw, 64px) clamp(48px, 7vw, 88px); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: end; }
+.hello { font-size: clamp(2rem, 5vw, 3.2rem); color: var(--red); line-height: 1.2; }
+.hero h1 {
+  font-family: var(--display); font-weight: 900; text-transform: uppercase;
+  font-size: clamp(4rem, 13vw, 10.5rem); line-height: .82; letter-spacing: -.015em;
+  margin-top: .1em;
+}
+.hero h1 .l { display: block; }
+.hero h1 .l:nth-child(1) { color: var(--nile); }
+.hero h1 .l:nth-child(2) { color: var(--ink); }
+.hero h1 .l:nth-child(3) {
+  color: transparent; -webkit-text-stroke: 2px var(--ink);
+  background: linear-gradient(90deg, var(--red), var(--sun) 50%, var(--green));
+  -webkit-background-clip: text; background-clip: text;
+}
+.hero-lede { max-width: 34ch; margin-top: 24px; font-size: 1.2rem; color: var(--muted); }
+.hero-lede strong { color: var(--ink); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.tag { font-family: var(--mono); font-size: .78rem; padding: 6px 12px; border-radius: 999px; border: 2px solid var(--ink); }
+
+/* Pentatonic instrument */
+.instrument { background: var(--ink); color: var(--wall); border-radius: 20px; padding: 22px; }
+.instrument h2 { font-family: var(--display); font-weight: 700; font-size: 1.7rem; text-transform: uppercase; letter-spacing: .02em; line-height: 1; }
+.instrument p { font-size: .92rem; opacity: .78; margin-top: 8px; }
+.keys { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 18px; height: 168px; }
+.key {
+  border: 0; border-radius: 10px 10px 14px 14px; cursor: pointer; color: var(--on-color);
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding-bottom: 10px;
+  font-family: var(--mono); font-size: .8rem; transition: transform .12s ease, filter .12s ease;
+  transform-origin: bottom;
+}
+.key:nth-child(1) { background: var(--red); height: 100%; }
+.key:nth-child(2) { background: var(--sun); color: var(--on-sun); height: 88%; align-self: end; }
+.key:nth-child(3) { background: var(--green); height: 76%; align-self: end; }
+.key:nth-child(4) { background: var(--nile); height: 88%; align-self: end; }
+.key:nth-child(5) { background: var(--wall); color: var(--ink); height: 100%; }
+.key .n { font-family: var(--display); font-weight: 900; font-size: 1.6rem; line-height: 1; }
+.key:hover { filter: brightness(1.08); }
+.key.hit { transform: scaleY(.92); filter: brightness(1.2); }
+.instrument small { display: block; margin-top: 12px; font-family: var(--mono); font-size: .72rem; opacity: .6; }
+
+/* Marquee */
+.marquee { background: var(--red); color: var(--on-color); overflow: hidden; padding-block: 14px; }
+.marquee-track { display: flex; gap: 40px; width: max-content; animation: slide 38s linear infinite; }
+.marquee span { font-family: var(--display); font-weight: 900; font-size: clamp(1.6rem, 3.5vw, 2.4rem); text-transform: uppercase; white-space: nowrap; display: inline-flex; gap: 40px; align-items: center; }
+.marquee span::after { content: ""; width: 14px; height: 14px; background: var(--sun); transform: rotate(45deg); }
+@keyframes slide { to { transform: translateX(-50%); } }
+
+/* About */
+.about { background: var(--sun); color: var(--on-sun); }
+.about-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
+.portrait {
+  position: relative; aspect-ratio: 4 / 5; max-width: 100%;
+  border-radius: 999px 999px 18px 18px; overflow: hidden; border: 6px solid var(--on-sun);
+  background:
+    conic-gradient(from -45deg at 50% 100%, var(--nile) 90deg, transparent 0) 0 100% / 40px 20px repeat-x,
+    repeating-linear-gradient(45deg, var(--red) 0 14px, #0000 14px 28px),
+    var(--green);
+}
+.portrait img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 1; }
+.portrait .ph {
+  position: absolute; inset: 0; display: grid; place-content: center; text-align: center; gap: 6px;
+  color: var(--on-color); font-family: var(--mono); font-size: .8rem;
+}
+.portrait .ph b { font-family: var(--arabic); font-size: 3.4rem; line-height: 1; }
+.about .h2 .ar { display: block; font-size: .42em; margin-bottom: .2em; }
+.about-copy p { max-width: 58ch; margin-top: 20px; font-size: 1.12rem; }
+.about-copy p:first-of-type { font-size: 1.35rem; font-weight: 500; }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 32px; }
+.fact { border-top: 3px solid var(--on-sun); padding-top: 10px; }
+.fact dt { font-family: var(--mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
+.fact dd { margin: 4px 0 0; font-weight: 700; line-height: 1.3; }
+.offclock { margin-top: 28px; }
+.offclock ul { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.offclock li { font-size: .9rem; font-weight: 500; padding: 6px 14px; border-radius: 999px; border: 2px solid var(--on-sun); }
+
+/* Projects */
+.section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: clamp(32px, 5vw, 56px); }
+.section-head p { max-width: 40ch; color: var(--muted); }
+.projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.project {
+  background: var(--card); border: 2px solid var(--ink); border-radius: 18px; overflow: hidden;
+  display: flex; flex-direction: column; text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.project:hover { transform: translate(-4px, -4px); box-shadow: 8px 8px 0 var(--ink); }
+.cover { aspect-ratio: 16 / 9; position: relative; display: grid; place-items: center; overflow: hidden; }
+.cover .big { font-family: var(--display); font-weight: 900; font-size: clamp(3rem, 7vw, 5rem); text-transform: uppercase; line-height: .9; text-align: center; position: relative; }
+.c1 { background: var(--nile); color: var(--on-color); }
+.c1::before { content: ""; position: absolute; inset: auto 0 0; height: 28px; background: conic-gradient(from -45deg at 50% 100%, var(--sun) 90deg, transparent 0) 0 0 / 28px 28px; }
+.c2 { background: var(--red); color: var(--on-color); }
+.c2::before { content: ""; position: absolute; inset: 0; background: repeating-radial-gradient(circle at 50% 120%, #0000 0 18px, #ffffff22 18px 20px); }
+.c3 { background: var(--green); color: var(--on-color); }
+.c3::before { content: ""; position: absolute; inset: 0; background: conic-gradient(from 45deg, #ffffff1a 25%, #0000 0 50%, #ffffff1a 0 75%, #0000 0) 0 0 / 48px 48px; }
+.c4 { background: var(--sun); color: var(--on-sun); }
+.c4::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, #0000 0 22px, #11131C22 22px 26px); }
+.c5 { background: var(--ink); color: var(--wall); }
+.c5::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle, var(--sun) 0 3px, #0000 4px) 0 0 / 26px 26px; opacity: .45; }
+.c6 { background: var(--wall); color: var(--ink); border-bottom: 2px solid var(--ink); }
+.c6::before, .c6::after { content: ""; position: absolute; left: 0; right: 0; height: 22px; }
+.c6::before { top: 0; background: conic-gradient(from 135deg at 50% 0%, var(--red) 90deg, transparent 0) 0 0 / 22px 22px; }
+.c6::after { bottom: 0; background: conic-gradient(from -45deg at 50% 100%, var(--green) 90deg, transparent 0) 0 0 / 22px 22px; }
+.cover .big .ar { display: block; font-size: .55em; margin-bottom: .15em; text-transform: none; }
+.project-body { padding: 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.project-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { font-family: var(--mono); font-size: .72rem; padding: 3px 10px; border-radius: 999px; background: var(--wall); border: 1px solid var(--line); }
+.chip.example { background: var(--sun); color: var(--on-sun); border-color: transparent; }
+.project h3 { font-family: var(--display); font-weight: 900; font-size: 2rem; text-transform: uppercase; line-height: 1; }
+.project p { color: var(--muted); }
+.project .role { margin-top: auto; padding-top: 8px; font-weight: 700; font-size: .92rem; }
+
+/* Photography: a gallery wall */
+.lens { background: var(--ink); color: var(--wall); }
+.lens .section-head p { color: var(--wall); opacity: .75; }
+.lens .h2 .ar { display: block; font-size: .42em; margin-bottom: .2em; color: var(--sun); }
+.gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
+.shot { margin: 0; position: relative; border-radius: 14px; overflow: hidden; aspect-ratio: 4 / 5; max-width: 100%; background: #22253a; }
+.shot img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+.shot:hover img { transform: scale(1.04); }
+.shot figcaption {
+  position: absolute; left: 10px; bottom: 10px; right: 10px;
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .06em;
+  color: #fff; background: #0d1026b3; padding: 6px 10px; border-radius: 999px; width: max-content; max-width: calc(100% - 20px);
+}
+.shot.tall { grid-row: span 2; aspect-ratio: auto; }
+.lens-cta { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.lens-cta .btn { border-color: var(--wall); color: var(--wall); }
+.lens-cta .btn:hover { background: var(--wall); color: var(--ink); }
+
+/* Skills: a record with two sides */
+.skills { background: var(--nile); color: var(--on-color); }
+.skills .section-head p { color: var(--on-color); opacity: .82; }
+.sides { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 4vw, 48px); }
+.side h3 { font-family: var(--display); font-weight: 900; font-size: 2.2rem; text-transform: uppercase; display: flex; align-items: center; gap: 14px; }
+.vinyl { width: 44px; height: 44px; border-radius: 50%; flex: none;
+  background: radial-gradient(circle, var(--sun) 0 22%, var(--ink) 23% 30%, #2a2d3d 31% 33%, var(--ink) 34% 45%, #2a2d3d 46% 48%, var(--ink) 49%);
+  animation: spin 6s linear infinite; }
+.side:nth-child(2) .vinyl { background: radial-gradient(circle, var(--red) 0 22%, var(--ink) 23% 30%, #2a2d3d 31% 33%, var(--ink) 34% 45%, #2a2d3d 46% 48%, var(--ink) 49%); }
+@keyframes spin { to { transform: rotate(360deg); } }
+.tracks { list-style: none; margin: 18px 0 0; padding: 0; border-top: 2px solid #ffffff55; }
+.tracks li { display: grid; grid-template-columns: 3ch minmax(0, 1fr) auto; gap: 14px; padding-block: 12px; border-bottom: 1px solid #ffffff33; align-items: baseline; }
+.tracks .no { font-family: var(--mono); font-size: .8rem; opacity: .7; }
+.tracks .t { font-weight: 700; }
+.tracks .tools { font-family: var(--mono); font-size: .76rem; opacity: .8; text-align: right; }
+
+.timeline { margin-top: clamp(48px, 7vw, 80px); }
+.timeline h3 { font-family: var(--display); font-weight: 900; font-size: 2.2rem; text-transform: uppercase; }
+.jobs { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 0; }
+.job { display: grid; grid-template-columns: 12ch minmax(0, 1fr); gap: 20px; padding-block: 18px; border-top: 2px solid #ffffff55; }
+.job .when { font-family: var(--mono); font-size: .82rem; opacity: .85; padding-top: 4px; }
+.job h4 { margin: 0; font-size: 1.2rem; }
+.job p { opacity: .85; max-width: 60ch; margin-top: 4px; }
+.certs { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 12px; }
+.cert { border: 2px solid #ffffff55; border-radius: 14px; padding: 14px 16px; display: grid; gap: 4px; align-content: start; }
+.cert b { font-size: 1rem; line-height: 1.3; }
+.cert span { font-family: var(--mono); font-size: .74rem; opacity: .85; }
+.cert.featured { background: var(--sun); color: var(--on-sun); border-color: var(--sun); }
+
+/* Contact */
+.contact { background: var(--red); color: var(--on-color); }
+.contact .h2 { font-size: clamp(3.4rem, 12vw, 9rem); }
+.contact .h2 em { font-style: normal; color: var(--sun); }
+.contact-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-top: 36px; }
+.email {
+  font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 4.5vw, 2.6rem);
+  background: var(--wall); color: var(--ink); padding: 10px 22px; border-radius: 999px; user-select: all;
+  overflow-wrap: anywhere; min-width: 0;
+}
+.btn {
+  font: 700 1rem var(--body); border: 2px solid var(--on-color); background: transparent; color: var(--on-color);
+  padding: 14px 22px; border-radius: 999px; cursor: pointer; text-decoration: none;
+}
+.btn:hover { background: var(--on-color); color: var(--red); }
+.socials { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+footer { padding-block: 28px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: .9rem; color: var(--muted); }
+
+@media (max-width: 860px) {
+  .hero-grid, .about-grid { grid-template-columns: 1fr; }
+  .portrait { max-width: 340px; }
+  .projects, .sides { grid-template-columns: 1fr; }
+  .gallery { gap: 10px; }
+}
+@media (max-width: 560px) {
+  .gallery { gap: 6px; }
+  .shot { border-radius: 8px; }
+  .shot figcaption { display: none; }
+}
+@media (max-width: 520px) {
+  .facts { grid-template-columns: 1fr; }
+  .job { grid-template-columns: 1fr; gap: 4px; }
+  .tracks li { grid-template-columns: 3ch minmax(0, 1fr); }
+  .tracks .tools { grid-column: 2; text-align: left; }
+  .keys { height: 140px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track, .vinyl { animation: none; }
+  html { scroll-behavior: auto; }
+  .project, .key, .shot img { transition: none; }
+}
+</style>
+<style>html{padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<header class="wrap nav">
+  <a class="logo" href="#top">NAWAF<b>.</b></a>
+  <nav aria-label="Sections">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Projects</a></li>
+      <li><a href="#lens">Photos</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="wrap hero">
+    <div class="hero-grid">
+      <div>
+        <p class="hello ar" lang="ar">أهلاً، أنا نوّاف</p>
+        <h1 aria-label="Design. Code. Rhythm.">
+          <span class="l">Design.</span>
+          <span class="l">Code.</span>
+          <span class="l">Rhythm.</span>
+        </h1>
+        <p class="hero-lede">I'm <strong>Nawaf Ahmed</strong>, a Sudanese developer and product designer studying software engineering at African Leadership University in Kigali. I build products for African students, schools and communities.</p>
+        <div class="tags">
+          <span class="tag">UI/UX</span>
+          <span class="tag">Product design</span>
+          <span class="tag">Flutter</span>
+          <span class="tag">React · Next.js</span>
+          <span class="tag">Offline-first</span>
+        </div>
+      </div>
+
+      <aside class="instrument" aria-labelledby="inst-title">
+        <h2 id="inst-title">Play the Sudanese scale</h2>
+        <p>From Wardi to Mahmoud Abdelaziz, Sudanese songs are built on five notes. Tap the keys, or press 1 to 5.</p>
+        <div class="keys" role="group" aria-label="Pentatonic keys">
+          <button class="key" id="k1" data-f="261.63"><span class="n">1</span>Do</button>
+          <button class="key" id="k2" data-f="293.66"><span class="n">2</span>Re</button>
+          <button class="key" id="k3" data-f="329.63"><span class="n">3</span>Mi</button>
+          <button class="key" id="k4" data-f="392.00"><span class="n">4</span>Sol</button>
+          <button class="key" id="k5" data-f="440.00"><span class="n">5</span>La</button>
+        </div>
+        <small>Anhemitonic pentatonic · no half-steps</small>
+      </aside>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Wardi</span><span>Figma</span><span>Afrobeats</span><span>Flutter</span><span>Oud</span><span>Prototyping</span><span>Photography</span><span>User research</span><span>Amapiano</span><span>JavaScript</span>
+      <span>Wardi</span><span>Figma</span><span>Afrobeats</span><span>Flutter</span><span>Oud</span><span>Prototyping</span><span>Photography</span><span>User research</span><span>Amapiano</span><span>JavaScript</span>
+    </div>
+  </div>
+
+  <section class="band about" id="about">
+    <div class="wrap about-grid">
+      <div class="portrait">
+        <img src="photos/nawaf-portrait.jpg" alt="Nawaf Ahmed in a cream jalabiya and shawl, standing in front of a red backdrop" style="object-position: 42% 30%">
+      </div>
+      <div class="about-copy">
+        <span class="eyebrow">About me</span>
+        <h2 class="h2"><span class="ar" lang="ar">من السودان</span>Rooted in Sudan, building for Africa.</h2>
+        <p>I care about both halves of a product: the systems that keep working when the internet doesn't, and the interface people actually touch.</p>
+        <p>At ALU I learn by building real things for real people: a campus reporting app for my own classmates, an e-learning platform that works offline, and, as an intern at Elevanda Ventures, a school portal for families in Kigali. I like owning the whole journey, from talking to users and sketching flows to designing the interface and writing the code that ships it. I'd rather build something useful than something trendy.</p>
+        <p>Music is where I come from. My library starts with Mohammed Wardi, Mahmoud Abdelaziz, Mohamed Al-Amin and Nancy Ajaj, and I love hearing that heritage reimagined by the AlMultaqa Chamber Orchestra. From there it jumps straight to Tems, Ayra Starr, amapiano and Central Cee.</p>
+        <p>With a camera I look for what I look for in an interface: lines, balance and light. I shoot the streets and architecture of Kigali and skies over the sea, and my site Story Cast is a love letter to the sound and landscapes of Sudan.</p>
+        <dl class="facts">
+          <div class="fact"><dt>Studying</dt><dd>Software engineering, ALU</dd></div>
+          <div class="fact"><dt>Based in</dt><dd>Kigali, Rwanda</dd></div>
+          <div class="fact"><dt>On repeat</dt><dd>Wardi, Wad Al-Amin, Tems</dd></div>
+        </dl>
+        <div class="offclock">
+          <span class="eyebrow">Off the clock</span>
+          <ul>
+            <li>Matchdays at Amahoro Stadium</li>
+            <li>Barça and Messi</li>            <li>Movies and TV shows</li>
+            <li>Tech and economy</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="frieze" aria-hidden="true"><span class="a"></span><span class="b"></span></div>
+
+  <section class="band" id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Selected work</span>
+          <h2 class="h2">Projects</h2>
+        </div>
+        <p>Products I've designed and built, from research to release. More on <a href="https://github.com/nwafawad" target="_blank" rel="noopener">GitHub</a>.</p>
+      </div>
+
+      <div class="projects">
+        <a class="project" href="https://github.com/nwafawad/campus_incident_reporter" target="_blank" rel="noopener">
+          <div class="cover c1"><span class="big">Campus<br>Care</span></div>
+          <div class="project-body">
+            <div class="project-meta"><span class="chip">Flutter</span><span class="chip">Firebase</span><span class="chip">Mobile</span></div>
+            <h3>CampusCare</h3>
+            <p>A mobile app for reporting and tracking maintenance and safety issues at ALU's Kigali campus. Students report with photos (anonymously if they want), say "Me too" on issues that affect them, and follow each report's status. Staff triage a queue, and reports left unresolved for 5 days get flagged.</p>
+            <span class="role">Design + development · View code →</span>
+          </div>
+        </a>
+        <a class="project" href="https://asala-hub.vercel.app" target="_blank" rel="noopener">
+          <div class="cover c3"><span class="big"><span class="ar" lang="ar">أصالة</span>Asala Hub</span></div>
+          <div class="project-body">
+            <div class="project-meta"><span class="chip">PWA</span><span class="chip">TypeScript</span><span class="chip">IndexedDB</span><span class="chip">Docker</span></div>
+            <h3>Asala Hub</h3>
+            <p>An offline-first e-learning app for places with weak internet. Educators build courses and grade work, students learn and submit assignments offline, and everything syncs automatically when the connection comes back.</p>
+            <span class="role">Full stack · Live site →</span>
+          </div>
+        </a>
+        <a class="project" href="https://github.com/nwafawad/storycast" target="_blank" rel="noopener">
+          <div class="cover c2"><span class="big">Story<br>Cast</span></div>
+          <div class="project-body">
+            <div class="project-meta"><span class="chip">HTML</span><span class="chip">Sass</span><span class="chip">Accessibility</span></div>
+            <h3>Story Cast</h3>
+            <p>A media microsite about Sudanese culture, music and landscapes, told through audio, live performances and photography. Every recording comes with a transcript, so anyone can follow it.</p>
+            <span class="role">Design + front end · View code →</span>
+          </div>
+        </a>
+        <a class="project" href="https://github.com/nwafawad/himma" target="_blank" rel="noopener">
+          <div class="cover c4"><span class="big"><span class="ar" lang="ar">همّة</span>Momentum</span></div>
+          <div class="project-body">
+            <div class="project-meta"><span class="chip">Next.js</span><span class="chip">Express</span><span class="chip">PostgreSQL</span><span class="chip">Gemini AI</span></div>
+            <h3>Momentum (Himma)</h3>
+            <p>A learning insight platform that turns what you read, watch and study into clear skill paths, with AI insights that show your progress and the gaps in what you know.</p>
+            <span class="role">Product + full stack · View code →</span>
+          </div>
+        </a>
+        <a class="project" href="https://github.com/nwafawad/CLIENT_APPLICATION-Elevanda-Ventures" target="_blank" rel="noopener">
+          <div class="cover c5"><span class="big">Elevanda<br>Schools</span></div>
+          <div class="project-body">
+            <div class="project-meta"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">MongoDB</span><span class="chip">Security</span></div>
+            <h3>Elevanda Ventures</h3>
+            <p>A school management system for parents and students in Kigali, with a client portal and an admin portal. Families pay and track school fees and see grades, attendance and timetables. Each device has to be approved by an admin before it can sign in.</p>
+            <span class="role">Internship · Full stack · View code →</span>
+          </div>
+        </a>
+        <a class="project" href="https://nwafawad.github.io/taste_of_africa_website_project/" target="_blank" rel="noopener">
+          <div class="cover c6"><span class="big">Taste of<br>Africa</span></div>
+          <div class="project-body">
+            <div class="project-meta"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Web design</span></div>
+            <h3>Taste of Africa</h3>
+            <p>A multi-page website celebrating the food of East, North and West Africa, with recipes, culinary regions and the stories behind the dishes.</p>
+            <span class="role">Design + front end · Live site →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band lens" id="lens">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Art · Photography</span>
+          <h2 class="h2"><span class="ar" lang="ar">بعيني</span>Through my lens</h2>
+        </div>
+        <p>When I'm not designing or coding, I'm out with a camera: harbours at night, skies over the sea, and the brick, lines and light of Kigali. The same eye for colour and composition goes into my interfaces.</p>
+      </div>
+      <ul class="gallery">
+        <li><figure class="shot"><img src="photos/harbour-night-chairs.jpg" alt="Moonlit harbour at night, with cranes lit up across the water and yellow and red plastic chairs on the shore" loading="lazy"><figcaption>Moon over the harbour</figcaption></figure></li>
+        <li><figure class="shot"><img src="photos/violet-dusk.jpg" alt="Violet and pink sky at dusk over calm water, with a thin crescent moon" loading="lazy"><figcaption>Violet dusk</figcaption></figure></li>
+        <li><figure class="shot"><img src="photos/running-at-sunset.jpg" alt="Two figures in white jalabiyas running across sand under a pink and orange sky" loading="lazy"><figcaption>Running at sunset</figcaption></figure></li>
+        <li><figure class="shot"><img src="photos/rainbow-over-port.jpg" alt="Rainbow arching over a port with cranes, a cargo ship and kayakers on the water" loading="lazy"><figcaption>Rainbow over the port</figcaption></figure></li>
+        <li><figure class="shot"><img src="photos/gulls-and-boats.jpg" alt="Gulls flying over small boats and a blue and red floating jetty under a cloudy sky" loading="lazy"><figcaption>Gulls and boats</figcaption></figure></li>
+        <li><figure class="shot"><img src="photos/harbour-lights.jpg" alt="Harbour lights reflected in dark water at night, with moored boats" loading="lazy"><figcaption>Harbour lights</figcaption></figure></li>
+        <li><figure class="shot"><img src="photos/kigali-hills-sunrise.jpg" alt="Sun breaking through clouds over the hills of Kigali, seen from a brick campus terrace" loading="lazy"><figcaption>Kigali hills</figcaption></figure></li>
+        <li><figure class="shot"><img src="photos/campus-terrace.jpg" alt="Low golden sun casting long shadows of brick columns across a campus terrace" loading="lazy"><figcaption>Brick and light</figcaption></figure></li>
+        <li><figure class="shot"><img src="photos/golden-hour-trees.jpg" alt="Two trees framing a hazy view over Kigali, with the sun glowing through the leaves" loading="lazy"><figcaption>Golden hour</figcaption></figure></li>
+      </ul>
+      <div class="lens-cta">
+        <a class="btn" href="https://www.instagram.com/nwafawad/" target="_blank" rel="noopener">More on Instagram @nwafawad</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="frieze alt" aria-hidden="true"><span class="a"></span><span class="b"></span></div>
+
+  <section class="band skills" id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Skills &amp; experience</span>
+          <h2 class="h2">Two sides,<br>one record.</h2>
+        </div>
+        <p>Design and code are the A and B side of how I work. Each one makes the other better.</p>
+      </div>
+
+      <div class="sides">
+        <div class="side">
+          <h3><span class="vinyl" aria-hidden="true"></span>Side A · Design</h3>
+          <ul class="tracks">
+            <li><span class="no">A1</span><span class="t">User research &amp; interviews</span><span class="tools">Notion · Miro</span></li>
+            <li><span class="no">A2</span><span class="t">UX flows &amp; wireframes</span><span class="tools">FigJam</span></li>
+            <li><span class="no">A3</span><span class="t">UI &amp; visual design</span><span class="tools">Figma</span></li>
+            <li><span class="no">A4</span><span class="t">Prototyping &amp; testing</span><span class="tools">Figma · Maze</span></li>
+            <li><span class="no">A5</span><span class="t">Design systems</span><span class="tools">Tokens · Components</span></li>
+          </ul>
+        </div>
+        <div class="side">
+          <h3><span class="vinyl" aria-hidden="true"></span>Side B · Code</h3>
+          <ul class="tracks">
+            <li><span class="no">B1</span><span class="t">Mobile apps</span><span class="tools">Flutter · Dart · Firebase</span></li>
+            <li><span class="no">B2</span><span class="t">Front-end web</span><span class="tools">React · Next.js · TypeScript · Tailwind · Sass</span></li>
+            <li><span class="no">B3</span><span class="t">Back end &amp; data</span><span class="tools">Node · Express · Python · PostgreSQL · MongoDB</span></li>
+            <li><span class="no">B4</span><span class="t">Offline-first PWAs</span><span class="tools">IndexedDB · Dexie · Sync</span></li>
+            <li><span class="no">B5</span><span class="t">DevOps &amp; tooling</span><span class="tools">Git · Docker · Linux · Shell</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <h3>Experience</h3>
+        <ol class="jobs" reversed>
+          <li class="job">
+            <span class="when">Jan 2025 – now</span>
+            <div><h4>Student Software Engineer · African Leadership University, Kigali</h4><p>Full-stack coursework from shell and Python to web stacks and DevOps, plus team products like CampusCare, Asala Hub and Momentum.</p></div>
+          </li>
+          <li class="job">
+            <span class="when">2026</span>
+            <div><h4>Software Engineering Intern · Elevanda Ventures, Kigali</h4><p>Built a school management system for parents and students: a client portal for school fees, grades, attendance and timetables, and an admin portal with device approval and role-based access. React, Node.js, Express and MongoDB.</p></div>
+          </li>
+          <li class="job">
+            <span class="when">Mar 2025</span>
+            <div><h4>SoCreative Entrepreneurship Program · British Council</h4><p>A programme for creative entrepreneurs, connecting my design and arts practice with building a business.</p></div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="timeline">
+        <h3>Certificates</h3>
+        <ul class="certs">
+          <li class="cert featured"><b>SoCreative Entrepreneurship Program</b><span>British Council · Mar 2025</span></li>
+          <li class="cert"><b>The Bits and Bytes of Computer Networking</b><span>Google · Apr 2024</span></li>
+          <li class="cert"><b>Technical Support Fundamentals</b><span>Google · Apr 2024</span></li>
+          <li class="cert"><b>Introduction to Back-End Development</b><span>Meta · Nov 2023</span></li>
+          <li class="cert"><b>HTML and CSS in Depth</b><span>Meta · Nov 2023</span></li>
+          <li class="cert"><b>Programming with JavaScript</b><span>Meta · Nov 2023</span></li>
+          <li class="cert"><b>Photography Basics and Beyond: From Smartphone to DSLR</b><span>Coursera specialization · Apr 2023</span></li>
+          <li class="cert"><b>Cameras, Exposure, and Photography</b><span>Coursera · Jun 2022</span></li>
+          <li class="cert"><b>Introduction to Cloud Computing</b><span>Coursera · Jun 2022</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="frieze" aria-hidden="true"><span class="a"></span><span class="b"></span></div>
+
+  <section class="band contact" id="contact">
+    <div class="wrap">
+      <span class="eyebrow">Contact</span>
+      <h2 class="h2">Let's make<br>something <em>loud.</em></h2>
+      <p style="max-width:48ch;margin-top:20px;font-size:1.15rem">Open to work on-site, hybrid or remote: software and product roles, internships, freelance design and dev, and creative collaborations. I also volunteer for arts and culture, education and tech causes. Write to me in English or Arabic.</p>
+      <div class="contact-row">
+        <span class="email" id="email">n.ahmed@alustudent.com</span>
+        <button class="btn" id="copy" type="button">Copy email</button>
+      </div>
+      <div class="socials">
+        <a class="btn" href="https://github.com/nwafawad" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/nawaf-ahmed-876101215/" target="_blank" rel="noopener">LinkedIn</a>        <a class="btn" href="https://www.instagram.com/nwafawad/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Nawaf Ahmed · Designed and built by me</span>
+    <span class="ar" lang="ar">صُنع بحُب من السودان</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  // Pentatonic keys: a plucked, oud-like tone
+  let ctx;
+  function pluck(freq) {
+    ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+    const t = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const filter = ctx.createBiquadFilter();
+    const gain = ctx.createGain();
+    osc.type = "sawtooth";
+    osc.frequency.value = freq;
+    filter.type = "lowpass";
+    filter.frequency.setValueAtTime(freq * 6, t);
+    filter.frequency.exponentialRampToValueAtTime(freq * 1.2, t + 0.6);
+    gain.gain.setValueAtTime(0.0001, t);
+    gain.gain.exponentialRampToValueAtTime(0.35, t + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + 1.4);
+    osc.connect(filter).connect(gain).connect(ctx.destination);
+    osc.start(t);
+    osc.stop(t + 1.5);
+  }
+  const keys = [...document.querySelectorAll(".key")];
+  function play(key) {
+    try { pluck(parseFloat(key.dataset.f)); } catch (e) {}
+    key.classList.add("hit");
+    setTimeout(() => key.classList.remove("hit"), 140);
+  }
+  keys.forEach(k => k.addEventListener("click", () => play(k)));
+  document.addEventListener("keydown", e => {
+    if (e.target.closest("input, textarea")) return;
+    const i = parseInt(e.key, 10);
+    if (i >= 1 && i <= 5) play(keys[i - 1]);
+  });
+
+  // Copy email
+  const copyBtn = document.getElementById("copy");
+  const email = document.getElementById("email");
+  copyBtn.addEventListener("click", () => {
+    const done = () => { copyBtn.textContent = "Copied"; setTimeout(() => copyBtn.textContent = "Copy email", 1800); };
+    const select = () => {
+      const r = document.createRange(); r.selectNodeContents(email);
+      const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+      copyBtn.textContent = "Selected, press Ctrl/⌘ C";
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email.textContent.trim()).then(done, select);
+    } else select();
+  });
+})();
+</script>
+
+</body>
+</html>
