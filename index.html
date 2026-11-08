@@ -4,11 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Nawaf Ahmed is a Sudanese developer, UI/UX and product designer, and photographer studying software engineering at African Leadership University in Kigali.">
+<link rel="canonical" href="https://nawaf-ahmed.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nawaf-ahmed.vercel.app/">
 <meta property="og:title" content="Nawaf Ahmed Portfolio">
 <meta property="og:description" content="Developer, product designer and photographer. Sudanese, based in Kigali.">
-<meta property="og:image" content="photos/nawaf-portrait.jpg">
+<meta property="og:image" content="https://nawaf-ahmed.vercel.app/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Nawaf Ahmed, developer, product designer and photographer, in front of a blue Nubian-pattern background">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nawaf Ahmed Portfolio">
+<meta name="twitter:description" content="Developer, product designer and photographer. Sudanese, based in Kigali.">
+<meta name="twitter:image" content="https://nawaf-ahmed.vercel.app/og-card.jpg">
 <meta name="theme-color" content="#2438D0">
 <title>Nawaf Ahmed Portfolio</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232438D0'/%3E%3Cpath d='M0 48h64v2a14 14 0 0 1-14 14H14A14 14 0 0 1 0 50z' fill='%23FFB21E'/%3E%3Ctext x='32' y='42' font-family='Arial Narrow,Impact,sans-serif' font-weight='900' font-size='40' text-anchor='middle' fill='white'%3EN%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Figtree:wght@400;500;700&family=Reem+Kufi:wght@500;700&family=JetBrains+Mono:wght@500&display=swap">
@@ -27,6 +38,8 @@
   --on-color: #FFFFFF;
   --on-sun: #11131C;
   --card: #FFFFFF;
+  --deep: #11131C;        /* always-dark panels: the instrument and the photo wall */
+  --on-deep: #F2F5FB;
 
   --display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
   --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -40,14 +53,14 @@
   :root:not([data-theme="light"]) {
     --wall: #0D1026; --ink: #F1F2FF; --muted: #A4AAC8; --line: #272C52;
     --nile: #3F55F0; --sun: #FFBE3D; --red: #E5294B; --green: #12985A;
-    --on-color: #FFFFFF; --on-sun: #11131C; --card: #161A3A;
+    --on-color: #FFFFFF; --on-sun: #11131C; --card: #161A3A; --deep: #05060F; --on-deep: #F1F2FF;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --wall: #0D1026; --ink: #F1F2FF; --muted: #A4AAC8; --line: #272C52;
   --nile: #3F55F0; --sun: #FFBE3D; --red: #E5294B; --green: #12985A;
-  --on-color: #FFFFFF; --on-sun: #11131C; --card: #161A3A;
+  --on-color: #FFFFFF; --on-sun: #11131C; --card: #161A3A; --deep: #05060F; --on-deep: #F1F2FF;
   color-scheme: dark;
 }
 
@@ -97,7 +110,7 @@ p { margin: 0; }
 /* Hero */
 .hero { padding-block: clamp(24px, 5vw, 64px) clamp(48px, 7vw, 88px); }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: end; }
-.hello { font-size: clamp(2rem, 5vw, 3.2rem); color: var(--red); line-height: 1.2; }
+.hello { font-size: clamp(2rem, 5vw, 3.2rem); color: var(--red); line-height: 1.2; text-align: left; }
 .hero h1 {
   font-family: var(--display); font-weight: 900; text-transform: uppercase;
   font-size: clamp(4rem, 13vw, 10.5rem); line-height: .82; letter-spacing: -.015em;
@@ -117,7 +130,7 @@ p { margin: 0; }
 .tag { font-family: var(--mono); font-size: .78rem; padding: 6px 12px; border-radius: 999px; border: 2px solid var(--ink); }
 
 /* Pentatonic instrument */
-.instrument { background: var(--ink); color: var(--wall); border-radius: 20px; padding: 22px; }
+.instrument { background: var(--deep); color: var(--on-deep); border-radius: 20px; padding: 22px; }
 .instrument h2 { font-family: var(--display); font-weight: 700; font-size: 1.7rem; text-transform: uppercase; letter-spacing: .02em; line-height: 1; }
 .instrument p { font-size: .92rem; opacity: .78; margin-top: 8px; }
 .keys { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 18px; height: 168px; }
@@ -131,7 +144,7 @@ p { margin: 0; }
 .key:nth-child(2) { background: var(--sun); color: var(--on-sun); height: 88%; align-self: end; }
 .key:nth-child(3) { background: var(--green); height: 76%; align-self: end; }
 .key:nth-child(4) { background: var(--nile); height: 88%; align-self: end; }
-.key:nth-child(5) { background: var(--wall); color: var(--ink); height: 100%; }
+.key:nth-child(5) { background: var(--on-deep); color: var(--deep); height: 100%; }
 .key .n { font-family: var(--display); font-weight: 900; font-size: 1.6rem; line-height: 1; }
 .key:hover { filter: brightness(1.08); }
 .key.hit { transform: scaleY(.92); filter: brightness(1.2); }
@@ -208,8 +221,8 @@ p { margin: 0; }
 .project .role { margin-top: auto; padding-top: 8px; font-weight: 700; font-size: .92rem; }
 
 /* Photography: a gallery wall */
-.lens { background: var(--ink); color: var(--wall); }
-.lens .section-head p { color: var(--wall); opacity: .75; }
+.lens { background: var(--deep); color: var(--on-deep); }
+.lens .section-head p { color: var(--on-deep); opacity: .75; }
 .lens .h2 .ar { display: block; font-size: .42em; margin-bottom: .2em; color: var(--sun); }
 .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
 .shot { margin: 0; position: relative; border-radius: 14px; overflow: hidden; aspect-ratio: 4 / 5; max-width: 100%; background: #22253a; }
@@ -222,8 +235,8 @@ p { margin: 0; }
 }
 .shot.tall { grid-row: span 2; aspect-ratio: auto; }
 .lens-cta { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-.lens-cta .btn { border-color: var(--wall); color: var(--wall); }
-.lens-cta .btn:hover { background: var(--wall); color: var(--ink); }
+.lens-cta .btn { border-color: var(--on-deep); color: var(--on-deep); }
+.lens-cta .btn:hover { background: var(--on-deep); color: var(--deep); }
 
 /* Skills: a record with two sides */
 .skills { background: var(--nile); color: var(--on-color); }
@@ -292,6 +305,45 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   .tracks .tools { grid-column: 2; text-align: left; }
   .keys { height: 140px; }
 }
+/* Sticky menu with the current section marked */
+section[id] { scroll-margin-top: 72px; }
+.nav ul a { position: relative; }
+.nav ul a.active { color: var(--red); }
+.nav ul a.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 3px; background: var(--red); border-radius: 2px; }
+@media (min-width: 720px) {
+  .topbar {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40;
+    background: color-mix(in srgb, var(--wall) 90%, transparent);
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    border-bottom: 1px solid transparent; transition: border-color .2s;
+  }
+  .topbar.stuck { border-bottom-color: var(--line); }
+  .topbar .nav { padding-block: 14px; }
+}
+
+/* Open to work */
+.status { display: flex; gap: 10px; align-items: center; margin-top: 20px; font-weight: 700; font-size: .95rem; }
+.dot { width: 10px; height: 10px; flex: none; border-radius: 50%; background: var(--green); animation: pulse 2s ease-out infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--green) 55%, transparent); } 100% { box-shadow: 0 0 0 12px transparent; } }
+
+/* Photo viewer */
+.shot { cursor: zoom-in; }
+.lightbox {
+  position: fixed; inset: 0; z-index: 100; display: grid; place-items: center;
+  background: rgba(8, 10, 24, .94); padding: 56px max(16px, env(safe-area-inset-right, 0px)) 56px max(16px, env(safe-area-inset-left, 0px));
+}
+.lightbox figure { margin: 0; display: grid; gap: 12px; justify-items: center; max-width: 100%; }
+.lightbox img { max-width: min(92vw, 640px); max-height: 78vh; width: auto; height: auto; border-radius: 12px; display: block; }
+.lightbox figcaption { color: #fff; font-family: var(--mono); font-size: .82rem; letter-spacing: .06em; text-align: center; }
+.lightbox button {
+  position: absolute; border: 0; cursor: pointer; color: #fff; background: #ffffff22; width: 48px; height: 48px;
+  border-radius: 50%; font-size: 1.8rem; line-height: 1; display: grid; place-items: center;
+}
+.lightbox button:hover { background: #ffffff44; }
+.lb-close { top: max(12px, env(safe-area-inset-top, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); }
+.lb-prev { left: max(8px, env(safe-area-inset-left, 0px)); top: 50%; transform: translateY(-50%); }
+.lb-next { right: max(8px, env(safe-area-inset-right, 0px)); top: 50%; transform: translateY(-50%); }
+
 /* Scroll motion. Everything is fully visible at rest: the script adds .motion to the page
    only when it can animate, so with no script or reduced motion nothing is ever hidden. */
 .progress {
@@ -322,7 +374,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 .gallery li:nth-child(4n+4) .shot { --blk: var(--nile); }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track, .vinyl { animation: none; }
+  .marquee-track, .vinyl, .dot { animation: none; }
   html { scroll-behavior: auto; }
   .project, .key, .shot img { transition: none; }
 }
@@ -332,6 +384,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 <body>
 
 <div class="progress" id="progress" aria-hidden="true"></div>
+<div class="topbar" id="topbar">
 <header class="wrap nav">
   <a class="logo" href="#top">NAWAF<b>.</b></a>
   <nav aria-label="Sections">
@@ -345,6 +398,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     </ul>
   </nav>
 </header>
+</div>
 
 <main id="top">
   <section class="wrap hero">
@@ -364,6 +418,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
           <span class="tag">React · Next.js</span>
           <span class="tag">Offline-first</span>
         </div>
+        <p class="status"><span class="dot" aria-hidden="true"></span>Open to internships and freelance work · Kigali or remote</p>
       </div>
 
       <aside class="instrument" aria-labelledby="inst-title">
@@ -397,9 +452,9 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
         <span class="eyebrow">About me</span>
         <h2 class="h2"><span class="ar" lang="ar">من السودان</span>Rooted in Sudan, building for Africa.</h2>
         <p>I care about both halves of a product: the systems that keep working when the internet doesn't, and the interface people actually touch.</p>
-        <p>At ALU I learn by building real things for real people: a campus reporting app for my own classmates, an e-learning platform that works offline, and, as an intern at Elevanda Ventures, a school portal for families in Kigali. I like owning the whole journey, from talking to users and sketching flows to designing the interface and writing the code that ships it. I'd rather build something useful than something trendy.</p>
-        <p>Music is where I come from. My library starts with Mohammed Wardi, Mahmoud Abdelaziz and Mohamed Al-Amin, and I love hearing that heritage reimagined by the AlMultaqa Chamber Orchestra. From there it jumps straight to Tems, Ayra Starr, amapiano and Central Cee.</p>
-        <p>With a camera I look for what I look for in an interface: lines, balance and light. I shoot the streets and architecture of Kigali and skies over the sea, and my site Story Cast is a love letter to the sound and landscapes of Sudan.</p>
+        <p>At ALU I build for real people: a campus reporting app for my classmates, an offline-first learning platform, and, during my internship at Elevanda Ventures, a school portal for families in Kigali. I'd rather build something useful than something trendy.</p>
+        <p>Music is where I come from. My library starts with Mohammed Wardi, Mahmoud Abdelaziz and Mohamed Al-Amin, then jumps to Tems, Ayra Starr and amapiano.</p>
+        <p>With a camera I look for what I look for in an interface: lines, balance and light. I shoot Kigali's streets and architecture and skies over the sea, and Story Cast is my love letter to the music and landscapes of Sudan.</p>
         <dl class="facts">
           <div class="fact"><dt>Studying</dt><dd>Software engineering, ALU</dd></div>
           <div class="fact"><dt>Based in</dt><dd>Kigali, Rwanda</dd></div>
@@ -409,7 +464,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
           <span class="eyebrow">Off the clock</span>
           <ul>
             <li>Matchdays at Amahoro Stadium</li>
-            <li>Barça and Messi</li>            <li>Movies and TV shows</li>
+            <li>Barça and Messi</li>
+            <li>Movies and TV shows</li>
             <li>Tech and economy</li>
           </ul>
         </div>
@@ -615,6 +671,13 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   </div>
 </footer>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+  <button class="lb-close" type="button" aria-label="Close">&times;</button>
+  <button class="lb-prev" type="button" aria-label="Previous photo">&#8249;</button>
+  <figure><img alt=""><figcaption></figcaption></figure>
+  <button class="lb-next" type="button" aria-label="Next photo">&#8250;</button>
+</div>
+
 <script>
 (() => {
   // Pentatonic keys: a plucked, oud-like tone
@@ -654,6 +717,9 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   const bar = document.getElementById("progress");
   const friezes = [...document.querySelectorAll(".frieze")];
+  const topbar = document.getElementById("topbar");
+  const navLinks = [...document.querySelectorAll('.nav ul a[href^="#"]')];
+  const navSections = navLinks.map(a => document.querySelector(a.getAttribute("href")));
   let ticking = false;
   function onScroll() {
     if (ticking) return;
@@ -663,6 +729,11 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
       const max = document.documentElement.scrollHeight - innerHeight;
       if (bar) bar.style.transform = "scaleX(" + (max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0) + ")";
       if (!reduce) friezes.forEach(f => f.style.setProperty("--sx", (f.getBoundingClientRect().top * 0.35).toFixed(1) + "px"));
+      if (topbar) topbar.classList.toggle("stuck", scrollY > 10);
+      const line = innerHeight * 0.35;
+      let current = null;
+      navSections.forEach(s => { if (s) { const r = s.getBoundingClientRect(); if (r.top <= line && r.bottom > line) current = s.id; } });
+      navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + current));
     });
   }
   addEventListener("scroll", onScroll, { passive: true });
@@ -703,6 +774,49 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     }), { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
     targets.forEach(el => io.observe(el));
   }
+
+  // Photo viewer
+  const lb = document.getElementById("lightbox");
+  const lbImg = lb.querySelector("img"), lbCap = lb.querySelector("figcaption");
+  const shots = [...document.querySelectorAll(".gallery .shot")];
+  let lbIndex = 0, lbOpener = null;
+  function lbShow(i) {
+    lbIndex = (i + shots.length) % shots.length;
+    const img = shots[lbIndex].querySelector("img"), cap = shots[lbIndex].querySelector("figcaption");
+    lbImg.src = img.getAttribute("src");
+    lbImg.alt = img.alt;
+    lbCap.textContent = (cap ? cap.textContent : "") + "  ·  " + (lbIndex + 1) + " / " + shots.length;
+  }
+  function lbOpen(i, opener) {
+    lbOpener = opener;
+    lbShow(i);
+    lb.hidden = false;
+    document.body.style.overflow = "hidden";
+    lb.querySelector(".lb-close").focus();
+  }
+  function lbClose() {
+    lb.hidden = true;
+    document.body.style.overflow = "";
+    if (lbOpener) lbOpener.focus();
+  }
+  shots.forEach((s, i) => {
+    s.tabIndex = 0;
+    s.setAttribute("role", "button");
+    const cap = s.querySelector("figcaption");
+    s.setAttribute("aria-label", "View photo: " + (cap ? cap.textContent : i + 1));
+    s.addEventListener("click", () => lbOpen(i, s));
+    s.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); lbOpen(i, s); } });
+  });
+  lb.querySelector(".lb-close").addEventListener("click", lbClose);
+  lb.querySelector(".lb-prev").addEventListener("click", () => lbShow(lbIndex - 1));
+  lb.querySelector(".lb-next").addEventListener("click", () => lbShow(lbIndex + 1));
+  lb.addEventListener("click", e => { if (e.target === lb) lbClose(); });
+  document.addEventListener("keydown", e => {
+    if (lb.hidden) return;
+    if (e.key === "Escape") lbClose();
+    else if (e.key === "ArrowLeft") lbShow(lbIndex - 1);
+    else if (e.key === "ArrowRight") lbShow(lbIndex + 1);
+  });
 
   // Copy email
   const copyBtn = document.getElementById("copy");
