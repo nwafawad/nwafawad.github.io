@@ -127,7 +127,7 @@ p { margin: 0; }
 
 /* Hero */
 .hero { padding-block: clamp(24px, 5vw, 64px) clamp(48px, 7vw, 88px); }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: end; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
 .hello { font-size: clamp(2rem, 5vw, 3.2rem); color: var(--red-ink); line-height: 1.2; text-align: left; }
 .hero h1 {
   font-family: var(--display); font-weight: 900; text-transform: uppercase;
@@ -137,15 +137,12 @@ p { margin: 0; }
 .hero h1 .l { display: block; }
 .hero h1 .l:nth-child(1) { color: var(--nile); }
 .hero h1 .l:nth-child(2) { color: var(--ink); }
-.hero h1 .l:nth-child(3) {
-  color: transparent; -webkit-text-stroke: 2px var(--ink);
-  background: linear-gradient(90deg, var(--red), var(--sun) 50%, var(--green));
-  -webkit-background-clip: text; background-clip: text;
-}
+.hero h1 .l:nth-child(3) { color: var(--red-ink); }
 .hero-lede { max-width: 34ch; margin-top: 24px; font-size: 1.2rem; color: var(--muted); }
 .hero-lede strong { color: var(--ink); }
-.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
-.tag { font-family: var(--mono); font-size: .78rem; padding: 6px 12px; border-radius: 999px; border: 2px solid var(--ink); }
+.tags { margin-top: 22px; font-family: var(--mono); font-size: .82rem; letter-spacing: .03em; line-height: 1.9; }
+.tag { display: inline-block; white-space: nowrap; }
+.tag:not(:last-child)::after { content: "+"; margin: 0 .7em; color: var(--red-ink); }
 
 /* Pentatonic instrument */
 .instrument { background: var(--deep); color: var(--on-deep); border-radius: 20px; padding: 22px; }
@@ -166,11 +163,15 @@ p { margin: 0; }
 .key .n { font-family: var(--display); font-weight: 900; font-size: 1.6rem; line-height: 1; }
 .key:hover { filter: brightness(1.08); }
 .key.hit { transform: scaleY(.92); filter: brightness(1.2); }
-.instrument small { display: block; margin-top: 12px; font-family: var(--mono); font-size: .72rem; opacity: .6; }
+.inst-foot { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; justify-content: space-between; margin-top: 14px; }
+.instrument small { font-family: var(--mono); font-size: .72rem; opacity: .6; }
+.tune { display: inline-flex; align-items: center; gap: 8px; font: 700 .85rem var(--body); color: var(--on-deep); background: transparent; border: 2px solid var(--on-deep); border-radius: 999px; padding: 7px 14px; cursor: pointer; }
+.tune::before { content: ""; border-left: 9px solid currentColor; border-top: 6px solid transparent; border-bottom: 6px solid transparent; }
+.tune:hover { background: var(--on-deep); color: var(--deep); }
 
 /* Marquee */
 .marquee { background: var(--red); color: var(--on-color); overflow: hidden; padding-block: 14px; }
-.marquee-track { display: flex; gap: 40px; width: max-content; animation: slide 38s linear infinite; }
+.marquee-track { display: flex; gap: 40px; width: max-content; transform: translateX(-40px); will-change: transform; }
 .marquee span { font-family: var(--display); font-weight: 900; font-size: clamp(1.6rem, 3.5vw, 2.4rem); text-transform: uppercase; white-space: nowrap; display: inline-flex; gap: 40px; align-items: center; }
 .marquee span::after { content: ""; width: 14px; height: 14px; background: var(--sun); transform: rotate(45deg); }
 @keyframes slide { to { transform: translateX(-50%); } }
@@ -192,7 +193,9 @@ p { margin: 0; }
   color: var(--on-color); font-family: var(--mono); font-size: .8rem;
 }
 .portrait .ph b { font-family: var(--arabic); font-size: 3.4rem; line-height: 1; }
-.about .h2 .ar { display: block; font-size: .42em; margin-bottom: .2em; }
+.h2 .ar { display: block; font-size: .42em; margin-bottom: .2em; text-align: left; color: var(--red-ink); }
+.about .h2 .ar { color: inherit; }
+.contact .h2 .ar { color: var(--sun); }
 .about-copy p { max-width: 58ch; margin-top: 20px; font-size: 1.12rem; }
 .about-copy p:first-of-type { font-size: 1.35rem; font-weight: 500; }
 .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 32px; }
@@ -200,13 +203,14 @@ p { margin: 0; }
 .fact dt { font-family: var(--mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
 .fact dd { margin: 4px 0 0; font-weight: 700; line-height: 1.3; }
 .offclock { margin-top: 28px; }
-.offclock ul { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.offclock li { font-size: .9rem; font-weight: 500; padding: 6px 14px; border-radius: 999px; border: 2px solid var(--on-sun); }
+.offclock ul { list-style: none; margin: 8px 0 0; padding: 0; }
+.offclock li { display: inline-block; font-weight: 700; }
+.offclock li:not(:last-child)::after { content: "·"; margin: 0 .6em; }
 
 /* Projects */
 .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: clamp(32px, 5vw, 56px); }
 .section-head p { max-width: 40ch; color: var(--muted); }
-.projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.projects { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 24px; }
 .project {
   background: var(--card); border: 2px solid var(--ink); border-radius: 18px; overflow: hidden;
   display: flex; flex-direction: column; text-decoration: none;
@@ -223,7 +227,7 @@ p { margin: 0; }
 .c3::before { content: ""; position: absolute; inset: 0; background: conic-gradient(from 45deg, #ffffff1a 25%, #0000 0 50%, #ffffff1a 0 75%, #0000 0) 0 0 / 48px 48px; }
 .c4 { background: var(--sun); color: var(--on-sun); }
 .c4::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, #0000 0 22px, #11131C22 22px 26px); }
-.c5 { background: var(--ink); color: var(--wall); }
+.c5 { background: var(--deep); color: var(--on-deep); }
 .c5::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle, var(--sun) 0 3px, #0000 4px) 0 0 / 26px 26px; opacity: .45; }
 .c6 { background: var(--wall); color: var(--ink); border-bottom: 2px solid var(--ink); }
 .c6::before, .c6::after { content: ""; position: absolute; left: 0; right: 0; height: 22px; }
@@ -237,11 +241,36 @@ p { margin: 0; }
 .project h3 { font-family: var(--display); font-weight: 900; font-size: 2rem; text-transform: uppercase; line-height: 1; }
 .project p { color: var(--muted); }
 .project .role { margin-top: auto; padding-top: 8px; font-weight: 700; font-size: .92rem; }
+.project { grid-column: span 2; }
+.project:nth-child(5), .project:nth-child(6) { grid-column: span 3; }
+.project:not(.featured) .cover .big { font-size: clamp(2.4rem, 4.2vw, 3.2rem); }
+.project.featured { grid-column: 1 / -1; flex-direction: row; }
+.project.featured .cover { flex: 0 0 54%; aspect-ratio: auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-evenly; gap: 20px; padding: 40px 24px 60px; }
+.project.featured .cover .big { font-size: clamp(3rem, 6vw, 5rem); text-align: left; }
+.project.featured .project-body { padding: clamp(22px, 3vw, 40px); justify-content: center; gap: 14px; }
+.project.featured h3 { font-size: clamp(2.4rem, 4vw, 3.4rem); }
+.project.featured .project-body > p { font-size: 1.08rem; }
+.project.featured .role { margin-top: 6px; }
+.flag { font-family: var(--mono); font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--red-ink); }
+/* Illustration of the app's report screen, drawn in CSS. One fixed look in both themes. */
+.phone { position: relative; flex: none; width: 172px; display: grid; gap: 8px; padding: 12px 10px 14px; background: #11131C; border-radius: 26px; box-shadow: 10px 10px 0 #0000002e; transform: rotate(4deg); font-family: var(--body); color: #11131C; text-align: left; }
+.ph-bar { width: 44px; height: 5px; border-radius: 3px; background: #ffffff55; justify-self: center; }
+.ph-card, .ph-steps { background: #fff; border-radius: 12px; padding: 10px; display: grid; }
+.ph-card { gap: 3px; font-size: .68rem; line-height: 1.3; }
+.ph-card b { font-size: .84rem; }
+.ph-card span { color: #525870; }
+.ph-chip { justify-self: start; margin-top: 3px; font-style: normal; font-weight: 700; font-size: .6rem; background: #FFB21E; padding: 2px 8px; border-radius: 999px; }
+.ph-steps { list-style: none; margin: 0; gap: 7px; font-size: .68rem; font-weight: 700; }
+.ph-steps li { display: flex; align-items: center; gap: 8px; color: #525870; }
+.ph-steps li::before { content: ""; flex: none; width: 10px; height: 10px; border-radius: 50%; border: 2px solid #525870; }
+.ph-steps li.done { color: #11131C; }
+.ph-steps li.done::before { background: #007A33; border-color: #007A33; }
+.ph-btn { background: #2438D0; color: #fff; text-align: center; font-weight: 700; font-size: .72rem; padding: 8px; border-radius: 999px; }
 
 /* Photography: a gallery wall */
 .lens { background: var(--deep); color: var(--on-deep); }
 .lens .section-head p { color: var(--on-deep); opacity: .75; }
-.lens .h2 .ar { display: block; font-size: .42em; margin-bottom: .2em; color: var(--sun); }
+.lens .h2 .ar { color: var(--sun); }
 .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
 .shot { margin: 0; position: relative; border-radius: 14px; overflow: hidden; aspect-ratio: 4 / 5; max-width: 100%; background: #22253a; }
 .shot img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
@@ -257,33 +286,41 @@ p { margin: 0; }
 .lens-cta .btn:hover { background: var(--on-deep); color: var(--deep); }
 
 /* Skills: a record with two sides */
-.skills { background: var(--nile); color: var(--on-color); }
-.skills .section-head p { color: var(--on-color); opacity: .92; }
+.skills { background: var(--wall); color: var(--ink); }
+.side { background: var(--card); border: 2px solid var(--ink); border-radius: 18px; padding: clamp(18px, 3vw, 28px); }
+.timeline + .sides { margin-top: clamp(48px, 7vw, 80px); }
 .sides { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 4vw, 48px); }
 .side h3 { font-family: var(--display); font-weight: 900; font-size: 2.2rem; text-transform: uppercase; display: flex; align-items: center; gap: 14px; }
 .vinyl { width: 44px; height: 44px; border-radius: 50%; flex: none;
-  background: radial-gradient(circle, var(--sun) 0 22%, var(--ink) 23% 30%, #2a2d3d 31% 33%, var(--ink) 34% 45%, #2a2d3d 46% 48%, var(--ink) 49%);
-  animation: spin 6s linear infinite; }
-.side:nth-child(2) .vinyl { background: radial-gradient(circle, var(--red) 0 22%, var(--ink) 23% 30%, #2a2d3d 31% 33%, var(--ink) 34% 45%, #2a2d3d 46% 48%, var(--ink) 49%); }
+  background: radial-gradient(circle, var(--sun) 0 22%, var(--deep) 23% 30%, #2a2d3d 31% 33%, var(--deep) 34% 45%, #2a2d3d 46% 48%, var(--deep) 49%);
+  will-change: transform; }
+.side:nth-child(2) .vinyl { background: radial-gradient(circle, var(--red) 0 22%, var(--deep) 23% 30%, #2a2d3d 31% 33%, var(--deep) 34% 45%, #2a2d3d 46% 48%, var(--deep) 49%); }
 @keyframes spin { to { transform: rotate(360deg); } }
-.tracks { list-style: none; margin: 18px 0 0; padding: 0; border-top: 2px solid #ffffff55; }
-.tracks li { display: grid; grid-template-columns: 3ch minmax(0, 1fr) auto; gap: 14px; padding-block: 12px; border-bottom: 1px solid #ffffff33; align-items: baseline; }
-.tracks .no { font-family: var(--mono); font-size: .8rem; opacity: .92; }
+.tracks { list-style: none; margin: 18px 0 0; padding: 0; border-top: 2px solid var(--ink); }
+.tracks li { display: grid; grid-template-columns: 3ch minmax(0, 1fr); gap: 2px 14px; padding-block: 12px; border-bottom: 1px solid var(--line); align-items: baseline; }
+.tracks li:last-child { border-bottom: 0; padding-bottom: 0; }
+.tracks .no { font-family: var(--mono); font-size: .8rem; color: var(--red-ink); }
 .tracks .t { font-weight: 700; }
-.tracks .tools { font-family: var(--mono); font-size: .76rem; opacity: .92; text-align: right; }
+.tracks .tools { font-family: var(--mono); font-size: .76rem; color: var(--muted); grid-column: 2; }
 
 .timeline { margin-top: clamp(48px, 7vw, 80px); }
+.timeline.first { margin-top: 0; }
 .timeline h3 { font-family: var(--display); font-weight: 900; font-size: 2.2rem; text-transform: uppercase; }
 .jobs { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 0; }
-.job { display: grid; grid-template-columns: 12ch minmax(0, 1fr); gap: 20px; padding-block: 18px; border-top: 2px solid #ffffff55; }
-.job .when { font-family: var(--mono); font-size: .82rem; opacity: .92; padding-top: 4px; }
+.job { display: grid; grid-template-columns: 12ch minmax(0, 1fr); gap: 20px; padding-block: 18px; border-top: 2px solid var(--ink); }
+.job .when { font-family: var(--mono); font-size: .82rem; color: var(--red-ink); padding-top: 4px; }
 .job h4 { margin: 0; font-size: 1.2rem; }
-.job p { opacity: .92; max-width: 60ch; margin-top: 4px; }
-.certs { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 12px; }
-.cert { border: 2px solid #ffffff55; border-radius: 14px; padding: 14px 16px; display: grid; gap: 4px; align-content: start; }
+.job p { color: var(--muted); max-width: 60ch; margin-top: 4px; }
+.certs { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 640px) { .certs { grid-template-columns: 1fr; } }
+.cert { border: 2px solid var(--line); background: var(--card); border-radius: 14px; padding: 14px 16px; display: grid; gap: 4px; align-content: start; }
 .cert b { font-size: 1rem; line-height: 1.3; }
-.cert span { font-family: var(--mono); font-size: .74rem; opacity: .92; }
+.cert span { font-family: var(--mono); font-size: .74rem; color: var(--muted); }
 .cert.featured { background: var(--sun); color: var(--on-sun); border-color: var(--sun); }
+.cert.featured span { color: var(--on-sun); }
+.certs.more { margin-top: 12px; }
+.more-btn { margin-top: 18px; font: 700 .95rem var(--body); padding: 12px 20px; border-radius: 999px; border: 2px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; }
+.more-btn:hover { background: var(--ink); color: var(--wall); }
 
 /* Contact */
 .contact { background: var(--red); color: var(--on-color); }
@@ -309,6 +346,9 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   .hero-grid, .about-grid { grid-template-columns: 1fr; }
   .portrait { max-width: 340px; }
   .projects, .sides { grid-template-columns: 1fr; }
+  .projects .project { grid-column: auto; }
+  .project.featured { flex-direction: column; }
+  .project.featured .cover { flex-basis: auto; }
   .gallery { gap: 10px; }
 }
 @media (max-width: 560px) {
@@ -349,6 +389,8 @@ main:focus { outline: none; }
   .nav { position: relative; }
   .nav > nav { flex-basis: 100%; }
   .nav ul li:last-child { position: absolute; top: 16px; right: var(--gutter-r); }
+  .nav ul { width: 100%; flex-wrap: nowrap; justify-content: space-between; gap: 4px; }
+  .nav ul a { font-size: .86rem; }
 }
 .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 .cta-btn { font: 700 1rem var(--body); padding: 14px 24px; border-radius: 999px; border: 2px solid var(--ink); color: var(--ink); text-decoration: none; transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease; }
@@ -359,7 +401,7 @@ main:focus { outline: none; }
 
 /* Open to work */
 .status { display: flex; gap: 10px; align-items: center; margin-top: 20px; font-weight: 700; font-size: .95rem; }
-.dot { width: 10px; height: 10px; flex: none; border-radius: 50%; background: var(--green); animation: pulse 2s ease-out infinite; }
+.dot { width: 10px; height: 10px; flex: none; border-radius: 50%; background: var(--green); }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--green) 55%, transparent); } 100% { box-shadow: 0 0 0 12px transparent; } }
 
 /* Photo viewer */
@@ -473,7 +515,7 @@ main:focus { outline: none; }
           <button class="key" id="k4" data-f="392.00"><span class="n">4</span>Sol</button>
           <button class="key" id="k5" data-f="440.00"><span class="n">5</span>La</button>
         </div>
-        <small>Anhemitonic pentatonic · no half-steps</small>
+        <div class="inst-foot"><button class="tune" id="tune" type="button">Play a tune</button><small>Five notes · no half-steps</small></div>
       </aside>
     </div>
   </section>
@@ -522,15 +564,24 @@ main:focus { outline: none; }
       <div class="section-head">
         <div>
           <span class="eyebrow">Selected work</span>
-          <h2 class="h2">Projects</h2>
+          <h2 class="h2"><span class="ar" lang="ar">أعمالي</span>Projects</h2>
         </div>
         <p>Products I've designed and built, from research to release. More on <a href="https://github.com/nwafawad" target="_blank" rel="noopener">GitHub</a>.</p>
       </div>
 
       <div class="projects">
-        <a class="project" href="https://github.com/nwafawad/campus_incident_reporter" target="_blank" rel="noopener">
-          <div class="cover c1"><span class="big">Campus<br>Care</span></div>
+        <a class="project featured" href="https://github.com/nwafawad/campus_incident_reporter" target="_blank" rel="noopener">
+          <div class="cover c1">
+            <span class="big">Campus<br>Care</span>
+            <div class="phone" aria-hidden="true">
+              <div class="ph-bar"></div>
+              <div class="ph-card"><b>Broken light</b><span>Library · Maintenance</span><i class="ph-chip">Urgent</i></div>
+              <ol class="ph-steps"><li class="done">Submitted</li><li class="done">In progress</li><li>Resolved</li></ol>
+              <div class="ph-btn">Me too</div>
+            </div>
+          </div>
           <div class="project-body">
+            <span class="flag">Featured project</span>
             <div class="project-meta"><span class="chip">Flutter</span><span class="chip">Firebase</span><span class="chip">Mobile</span></div>
             <h3>CampusCare</h3>
             <p>A mobile app for reporting and tracking maintenance and safety issues at ALU's Kigali campus. Students report with photos (anonymously if they want), say "Me too" on issues that affect them, and follow each report's status. Staff triage a queue, and reports left unresolved for 5 days get flagged.</p>
@@ -618,10 +669,32 @@ main:focus { outline: none; }
     <div class="wrap">
       <div class="section-head">
         <div>
-          <span class="eyebrow">Skills &amp; experience</span>
-          <h2 class="h2">Two sides,<br>one record.</h2>
+          <span class="eyebrow">Experience &amp; skills</span>
+          <h2 class="h2"><span class="ar" lang="ar">مهاراتي</span>Two sides,<br>one record.</h2>
         </div>
         <p>Design and code are the A and B side of how I work. Each one makes the other better.</p>
+      </div>
+
+      <div class="timeline first">
+        <h3>Experience</h3>
+        <ol class="jobs" reversed>
+          <li class="job">
+            <span class="when">Jan 2025 – May 2028</span>
+            <div><h4>Bachelor of Software Engineering · African Leadership University, Kigali</h4><p>Second Upper standing, graduating May 2028. Full-stack coursework from shell and Python to web stacks and DevOps, plus team products like CampusCare, Asala Hub and Momentum.</p></div>
+          </li>
+          <li class="job">
+            <span class="when">Apr – Aug 2026</span>
+            <div><h4>Software Development Intern · Elevanda Ventures, Kigali</h4><p>Contributed to React and Express.js school administration tools for student records, attendance and fee workflows, using PostgreSQL with Prisma ORM. Containerized workflows with Docker and used Git to coordinate changes and deployments across teams.</p></div>
+          </li>
+          <li class="job">
+            <span class="when">Mar 2025</span>
+            <div><h4>SoCreative Entrepreneurship Program · British Council and ALU</h4><p>A programme for creative entrepreneurs, connecting my design and arts practice with building a business.</p></div>
+          </li>
+          <li class="job">
+            <span class="when">Volunteer</span>
+            <div><h4>Portive Youth · Port Sudan</h4><p>Public engagement initiatives for young people in my home city.</p></div>
+          </li>
+        </ol>
       </div>
 
       <div class="sides">
@@ -648,40 +721,21 @@ main:focus { outline: none; }
       </div>
 
       <div class="timeline">
-        <h3>Experience</h3>
-        <ol class="jobs" reversed>
-          <li class="job">
-            <span class="when">Jan 2025 – May 2028</span>
-            <div><h4>Bachelor of Software Engineering · African Leadership University, Kigali</h4><p>Second Upper standing, graduating May 2028. Full-stack coursework from shell and Python to web stacks and DevOps, plus team products like CampusCare, Asala Hub and Momentum.</p></div>
-          </li>
-          <li class="job">
-            <span class="when">Apr – Aug 2026</span>
-            <div><h4>Software Development Intern · Elevanda Ventures, Kigali</h4><p>Contributed to React and Express.js school administration tools for student records, attendance and fee workflows, using PostgreSQL with Prisma ORM. Containerized workflows with Docker and used Git to coordinate changes and deployments across teams.</p></div>
-          </li>
-          <li class="job">
-            <span class="when">Mar 2025</span>
-            <div><h4>SoCreative Entrepreneurship Program · British Council and ALU</h4><p>A programme for creative entrepreneurs, connecting my design and arts practice with building a business.</p></div>
-          </li>
-          <li class="job">
-            <span class="when">Volunteer</span>
-            <div><h4>Portive Youth · Port Sudan</h4><p>Public engagement initiatives for young people in my home city.</p></div>
-          </li>
-        </ol>
-      </div>
-
-      <div class="timeline">
         <h3>Certificates</h3>
         <ul class="certs">
           <li class="cert featured"><b>SoCreative Entrepreneurship Program</b><span>British Council and ALU · Mar 2025</span></li>
           <li class="cert"><b>The Bits and Bytes of Computer Networking</b><span>Google · Apr 2024</span></li>
-          <li class="cert"><b>Technical Support Fundamentals</b><span>Google · Apr 2024</span></li>
           <li class="cert"><b>Introduction to Back-End Development</b><span>Meta · Nov 2023</span></li>
-          <li class="cert"><b>HTML and CSS in Depth</b><span>Meta · Nov 2023</span></li>
+        </ul>
+        <ul class="certs more" id="more-certs" hidden>
           <li class="cert"><b>Programming with JavaScript</b><span>Meta · Nov 2023</span></li>
+          <li class="cert"><b>Technical Support Fundamentals</b><span>Google · Apr 2024</span></li>
+          <li class="cert"><b>HTML and CSS in Depth</b><span>Meta · Nov 2023</span></li>
           <li class="cert"><b>Photography Basics and Beyond: From Smartphone to DSLR</b><span>Coursera specialization · Apr 2023</span></li>
           <li class="cert"><b>Cameras, Exposure, and Photography</b><span>Coursera · Jun 2022</span></li>
           <li class="cert"><b>Introduction to Cloud Computing</b><span>Coursera · Jun 2022</span></li>
         </ul>
+        <button class="more-btn" id="certs-toggle" type="button" aria-expanded="false" aria-controls="more-certs">Show all 9 certificates</button>
       </div>
     </div>
   </section>
@@ -691,10 +745,10 @@ main:focus { outline: none; }
   <section class="band contact" id="contact">
     <div class="wrap">
       <span class="eyebrow">Contact</span>
-      <h2 class="h2">Let's make<br>something <em>loud.</em></h2>
+      <h2 class="h2"><span class="ar" lang="ar">لنتواصل</span>Let's make<br>something <em>loud.</em></h2>
       <p style="max-width:48ch;margin-top:20px;font-size:1.15rem">Open to work on-site, hybrid or remote: software and product roles, internships, freelance design and dev, and creative collaborations. I also volunteer for arts and culture, education and tech causes. Write to me in English or Arabic.</p>
       <div class="contact-row">
-        <span class="email" id="email">n.ahmed@alustudent.com</span>
+        <span class="email" id="email">nwafawad49@gmail.com</span>
         <button class="btn" id="copy" type="button">Copy email</button>
         <a class="btn" href="Nawaf_Ahmed_CV.pdf" target="_blank" rel="noopener">View CV (PDF)</a>
       </div>
@@ -749,6 +803,13 @@ main:focus { outline: none; }
     setTimeout(() => key.classList.remove("hit"), 140);
   }
   keys.forEach(k => k.addEventListener("click", () => play(k)));
+  // A short pentatonic phrase, played on the keys
+  let tuneTimers = [];
+  document.getElementById("tune").addEventListener("click", () => {
+    tuneTimers.forEach(clearTimeout);
+    const phrase = [[0, 0], [1, 280], [2, 560], [4, 840], [3, 1260], [2, 1540], [1, 1820], [2, 2100], [0, 2520], [1, 2800], [0, 3220]];
+    tuneTimers = phrase.map(([k, t]) => setTimeout(() => play(keys[k]), t));
+  });
   document.addEventListener("keydown", e => {
     if (e.target.closest("input, textarea")) return;
     const i = parseInt(e.key, 10);
@@ -759,6 +820,8 @@ main:focus { outline: none; }
   const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   const bar = document.getElementById("progress");
   const friezes = [...document.querySelectorAll(".frieze")];
+  const strip = document.querySelector(".marquee-track");
+  const vinyls = [...document.querySelectorAll(".vinyl")];
   const topbar = document.getElementById("topbar");
   const navLinks = [...document.querySelectorAll('.nav ul a[href^="#"]')];
   const navSections = navLinks.map(a => document.querySelector(a.getAttribute("href")));
@@ -771,6 +834,8 @@ main:focus { outline: none; }
       const max = document.documentElement.scrollHeight - innerHeight;
       if (bar) bar.style.transform = "scaleX(" + (max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0) + ")";
       if (!reduce) friezes.forEach(f => f.style.setProperty("--sx", (f.getBoundingClientRect().top * 0.35).toFixed(1) + "px"));
+      if (!reduce && strip) strip.style.transform = "translateX(" + (-40 - scrollY * 0.35).toFixed(1) + "px)";
+      if (!reduce) vinyls.forEach(v => { v.style.transform = "rotate(" + (scrollY * 0.3).toFixed(1) + "deg)"; });
       if (topbar) topbar.classList.toggle("stuck", scrollY > 10);
       const line = innerHeight * 0.35;
       let current = null;
@@ -878,6 +943,16 @@ main:focus { outline: none; }
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
+  });
+
+  // Certificates: show the rest on request
+  const certsBtn = document.getElementById("certs-toggle");
+  const moreCerts = document.getElementById("more-certs");
+  certsBtn.addEventListener("click", () => {
+    const open = moreCerts.hidden;
+    moreCerts.hidden = !open;
+    certsBtn.setAttribute("aria-expanded", String(open));
+    certsBtn.textContent = open ? "Show fewer certificates" : "Show all 9 certificates";
   });
 
   // Copy email
